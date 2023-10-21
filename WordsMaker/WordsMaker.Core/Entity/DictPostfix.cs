@@ -5,9 +5,10 @@ using WordsMaker.Core.ValueObjects;
 
 namespace WordsMaker.Core.Entity
 {
-    public class DictPrefix : DictSufix
+    public class DictPostfix : DictSufix
     {
-        public DictPrefix(Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(lang, relatedWords, value)
+        
+        public DictPostfix(Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(lang, relatedWords, value)
         {
         }
     }
