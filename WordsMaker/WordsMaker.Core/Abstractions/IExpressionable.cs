@@ -5,9 +5,9 @@ using WordsMaker.Core.ValueObjects;
 
 namespace WordsMaker.Core.Abstractions
 {
-    public interface IExpressionable
+    public interface IExpressionable  
     {
         public Lang CurrentLang { get; }
-        public Word Value { get; }
+        public Phrase Phrase { get;  }
     }
 }

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace WordsMaker.Core.ValueObjects
 {
-    public class Phrase
+    public  class Phrase
     {
-        public string Value { get; private set; }
+        public string Value { get; protected set; }
         public Phrase(string value)
         {
             Value = value;

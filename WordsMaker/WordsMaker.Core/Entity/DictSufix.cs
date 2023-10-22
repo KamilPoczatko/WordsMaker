@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WordsMaker.Core.Abstractions;
 using WordsMaker.Core.ValueObjects;
+using WordsMaker.Core.ValueObjects.IDs;
 
 namespace WordsMaker.Core.Entity
 {
-    public abstract class DictSufix
+    public abstract class DictSufix : Phrase, IExpressionable
     {
-        public Lang Lang { get; }
+        public SufixId SufixId { get; }
+        public Lang CurrentLang { get; }
         public IEnumerable<Word> RelatedWords { get; }
-        public Phrase Value { get; }
-        public DictSufix(Lang lang, IEnumerable<Word> relatedWords, Phrase value)
+        public Phrase Phrase => Value;
+
+        public DictSufix(SufixId sufixId ,Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(value)
         {
-            Lang = lang;
+            SufixId = sufixId;
+            CurrentLang = lang;
             RelatedWords = relatedWords;
-            Value = value;
         }
     }
 }

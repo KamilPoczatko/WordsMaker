@@ -5,16 +5,19 @@ using WordsMaker.Core.Enums;
 
 namespace WordsMaker.Core.ValueObjects
 {
-    public class Word
+    public class Word : Phrase
     {
-        public string Value { get; private set; }
         public WordType Type { get; private set; }
-        public string? Context { get; private set; }
-        public Word(string value, WordType type = WordType.Noun, string context = null)
+        public string Context { get; private set; }
+        public Word(string value, WordType type = WordType.Noun, string context = "") : base(value)
         {
-            Value = value;
             Type = type;
             Context = context;
+        }
+        public Word(string value) : base(value)
+        {
+            Type = WordType.Noun;
+            Context = "";
         }
 
         public static implicit operator string(Word value) => value.Value;
