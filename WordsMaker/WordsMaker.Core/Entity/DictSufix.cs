@@ -9,10 +9,11 @@ namespace WordsMaker.Core.Entity
 {
     public abstract class DictSufix : Phrase, IExpressionable
     {
-        public SufixId SufixId { get; }
+        SufixId SufixId { get; }
         public Lang CurrentLang { get; }
         public IEnumerable<Word> RelatedWords { get; }
         public Phrase Phrase => Value;
+        public Guid Id => SufixId;
 
         public DictSufix(SufixId sufixId ,Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(value)
         {

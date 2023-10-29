@@ -11,7 +11,7 @@ namespace WordsMaker.Core.ValueObjects.IDs
         public WordId(Guid id) : base(id) { }
         public WordId() : base() { }
 
-        public static implicit operator WordId(LangId value) => value.Id;
+        public static implicit operator Guid(WordId value) => value.Id;
 
         public static implicit operator WordId(Guid Value) => new WordId(Value);
     }

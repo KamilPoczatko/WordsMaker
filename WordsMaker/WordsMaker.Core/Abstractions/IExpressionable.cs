@@ -5,7 +5,7 @@ using WordsMaker.Core.ValueObjects;
 
 namespace WordsMaker.Core.Abstractions
 {
-    public interface IExpressionable  
+    public interface IExpressionable : ITraceable
     {
         public Lang CurrentLang { get; }
         public Phrase Phrase { get;  }
