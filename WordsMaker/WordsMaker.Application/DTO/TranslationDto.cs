@@ -9,8 +9,8 @@ namespace WordsMaker.Application.DTO
     public class TranslationDto
     {
         public TranslationId TranslationId { get; set; }
-        public DictWord CurrentWordId { get; set; }
-        public DictWord ForeignWordId { get; set; }
+        public DictWord CurrentWord { get; set; }
+        public DictWord ForeignWord { get; set; }
 
     }
 }

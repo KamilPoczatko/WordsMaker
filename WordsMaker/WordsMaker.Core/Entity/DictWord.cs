@@ -9,13 +9,15 @@ namespace WordsMaker.Core.Entity
 {
     public class DictWord : IExpressionable
     {
-        WordId WordId { get; }
-        Word Value { get; }
-        public Lang CurrentLang { get; }       
+        public WordId WordId { get; }
+        public Word Value { get; }
+        public DictLang CurrentLang { get; }       
         public Phrase Phrase => Value;
         public Guid Id => WordId;
 
-        public DictWord(WordId wordId, Lang lang, Word value)
+        Lang IExpressionable.CurrentLang => CurrentLang.Lang;
+
+        public DictWord(WordId wordId, DictLang lang, Word value)
         {
             WordId = wordId;
             CurrentLang = lang;

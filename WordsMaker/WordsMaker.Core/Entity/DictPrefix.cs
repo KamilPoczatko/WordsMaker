@@ -9,7 +9,7 @@ namespace WordsMaker.Core.Entity
 {
     public class DictPrefix : DictSufix
     {
-        Sufix SufixType => Sufix.Prefix;
+        public override Sufix SufixType => Sufix.Prefix;
         public DictPrefix(SufixId sufixId,Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(sufixId, lang, relatedWords, value)
         {
         }

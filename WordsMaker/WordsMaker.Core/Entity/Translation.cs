@@ -10,16 +10,16 @@ namespace WordsMaker.Core.Entity
     public class Translation : ITranslatable, ITraceable
     {
         TranslationId TranslationId { get; }
-        public IExpressionable CurrentWord { get; }
-        public IExpressionable ForeignWord { get; }
+        public DictWord CurrentWord { get; }
+        public DictWord ForeignWord { get; }
 
         public Guid Id => TranslationId;
 
-        public Translation(IExpressionable currentWord, IExpressionable foreignWord)
+        public Translation(DictWord currentWord, DictWord foreignWord)
         {
             if(currentWord.CurrentLang == foreignWord.CurrentLang)
             {
-                throw new DoubledLangException(currentWord.CurrentLang);
+                throw new DoubledLangException(currentWord.CurrentLang.Lang);
             }
 
             CurrentWord = currentWord;

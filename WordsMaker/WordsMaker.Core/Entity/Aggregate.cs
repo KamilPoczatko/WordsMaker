@@ -9,8 +9,17 @@ namespace WordsMaker.Core.Entity
     {
         Translation Translation { get; }
         IEnumerable<DictWord> WordsDiffType { get; }
-        IEnumerable<DictWord> WordsDiffMean { get; }
-        Prefix Prefix { get; }
-        Postfix Postfix { get; }
+        IEnumerable<Phrase> PhrasesDiffMean { get; }
+        DictPrefix Prefix { get; }
+        DictPostfix Postfix { get; }
+
+        public Aggregate(Translation translation, IEnumerable<DictWord> wordsDiffType, IEnumerable<Phrase> phrasesDiffMean, DictPrefix prefix, DictPostfix postfix)
+        {
+            Translation = translation;
+            WordsDiffType = wordsDiffType;
+            PhrasesDiffMean = phrasesDiffMean;
+            Prefix = prefix;
+            Postfix = postfix;
+        }
     }
 }
