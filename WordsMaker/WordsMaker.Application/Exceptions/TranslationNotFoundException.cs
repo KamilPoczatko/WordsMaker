@@ -6,7 +6,7 @@ using WordsMaker.Core.ValueObjects;
 
 namespace WordsMaker.Application.Exceptions
 {
-    public class TranslationNotFoundException : Exception
+    public sealed class TranslationNotFoundException : CustomAppException
     {
         public Phrase Phrase { get; }
         public DictLang CurrentLang { get; }

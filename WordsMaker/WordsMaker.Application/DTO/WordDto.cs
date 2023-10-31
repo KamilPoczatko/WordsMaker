@@ -8,8 +8,8 @@ namespace WordsMaker.Application.DTO
 {
     public class WordDto
     {
-        public WordId WordId { get; }
-        public Lang CurrentLang { get; }
-        public Word Value { get; }
+        public WordId WordId { get; set; }
+        public Lang CurrentLang { get; set; }
+        public Word Value { get; set;  }
     }
 }

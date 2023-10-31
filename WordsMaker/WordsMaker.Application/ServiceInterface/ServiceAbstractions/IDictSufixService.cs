@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WordsMaker.Core.Entity;
-using WordsMaker.Core.ValueObjects;
 using WordsMaker.Core.ValueObjects.IDs;
+using WordsMaker.Core.ValueObjects;
 
-namespace WordsMaker.Core.Repository
+namespace WordsMaker.Application.ServiceInterface.ServiceAbstractions
 {
-    public interface IDictSufixRepository
+    public interface IDictSufixService
     {
         Task<IEnumerable<DictSufix>> GetAllAsync();
         Task<DictSufix> GetAsync(SufixId SufixId);
         Task<IEnumerable<DictSufix>> GetAllByWordAsync(DictWord sourceWord);
-        async Task<bool> IsExistsAsync(SufixId sufixId)
+        public async Task<bool> IsExistsAsync(SufixId sufixId)
         {
             var DictSufix = await GetAsync(sufixId);
             return DictSufix != null;
 
         }
 
-        Task AddAsync(DictSufix dictSufix);
-        Task DeleteAsync(SufixId SufixId);
-        Task AddRelatedWord(SufixId SufixId, Word relatedWord);
-        Task AddRelatedWords(SufixId SufixId, IEnumerable<Word> relatedWords);
-
-
+        void AddAsync(DictSufix dictSufix);
+        void DeleteAsync(SufixId SufixId);
+        void AddRelatedWord(SufixId SufixId, Word relatedWord);
+        void AddRelatedWords(SufixId SufixId, IEnumerable<Word> relatedWords);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WordsMaker.Application.Exceptions;
+using WordsMaker.Application.ServiceInterface.ServiceAbstractions;
 using WordsMaker.Core.Entity;
 using WordsMaker.Core.Enums;
 using WordsMaker.Core.Repository;
@@ -13,23 +14,28 @@ namespace WordsMaker.Application.ServiceInterface
     public class CollectAggregate
     {
         public Aggregate Aggregate { get; private set; }
-        private readonly IDictSufixRepository _sufixRepository;
-        private readonly IDictWordRepository _wordRepository;
-        private readonly ITranslationRepository _translationRepository;
-        private readonly ILangRepository _langRepository;
+        private readonly IDictSufixService _sufixService;
+        private readonly IDictWordService _wordService;
+        private readonly ITranslationService _translationService;
+        private readonly ILangService _langService;
 
-        public CollectAggregate(IDictSufixRepository sufixRepository, IDictWordRepository wordRepository, ITranslationRepository translationRepository, ILangRepository langRepository)
+        public CollectAggregate(IDictSufixService sufixService, 
+                                IDictWordService wordService, 
+                                ITranslationService translationService, 
+                                ILangService langService)
         {
-            _sufixRepository = sufixRepository;
-            _wordRepository = wordRepository;
-            _translationRepository = translationRepository;
-            _langRepository = langRepository;
+            _sufixService = sufixService;
+            _wordService = wordService;
+            _translationService = translationService;
+            _langService = langService;
         }
 
         public async void ProcessAggregate(DictWord dictWord, DictLang foreignLang)
         {
+            ValidLang(dictWord.CurrentLang);
+            ValidLang(foreignLang);
 
-            var translations = await _translationRepository.GetAsync(dictWord, foreignLang);
+            var translations = await _translationService.GetAsync(dictWord, foreignLang);
 
             var currentTranslation = translations.FirstOrDefault(x => x.CurrentWord.Value.Context == dictWord.Value.Context);
             if (currentTranslation is null)
@@ -37,13 +43,14 @@ namespace WordsMaker.Application.ServiceInterface
                 throw new TranslationNotFoundException(dictWord, foreignLang);
             }
             
-            var sufixes = await _sufixRepository.GetAllByWordAsync(currentTranslation.ForeignWord);
+            var sufixes = await _sufixService.GetAllByWordAsync(currentTranslation.ForeignWord);
             var prefix = sufixes.OfType<DictPrefix>().FirstOrDefault(x => x.SufixType == Sufix.Prefix);
             var postfix = sufixes.OfType<DictPostfix>().FirstOrDefault(x => x.SufixType == Sufix.Postfix);
 
-            var wordsDiffMean = translations.Where(x => x.ForeignWord.Value.Context != dictWord.Value.Context).Select(s => new Phrase(s.ForeignWord.Value.Value));
+            var wordsDiffMean = translations.Where(x => x.ForeignWord.Value.Context != dictWord.Value.Context)
+                                            .Select(s => new Phrase(s.ForeignWord.Value.Value));
             
-            var wordsDiffType = _wordRepository.GetAllRelatedAsync(currentTranslation.ForeignWord);
+            var wordsDiffType = _wordService.GetAllRelatedAsync(currentTranslation.ForeignWord);
 
             Aggregate = new Aggregate(currentTranslation, null, wordsDiffMean, prefix, postfix );
 
@@ -52,7 +59,7 @@ namespace WordsMaker.Application.ServiceInterface
 
         private async void ValidLang(DictLang dictLang)
         {
-            if (! await _langRepository.IsExistsAsync(dictLang.LangId))
+            if(!await _langService.IsExistsAsync(dictLang.LangId))
             {
                 throw new LangNotFoundException(dictLang);
             }

@@ -3,29 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WordsMaker.Core.Entity;
-using WordsMaker.Core.ValueObjects;
 using WordsMaker.Core.ValueObjects.IDs;
+using WordsMaker.Core.ValueObjects;
 
-namespace WordsMaker.Core.Repository
+namespace WordsMaker.Application.ServiceInterface.ServiceAbstractions
 {
-    public interface ILangRepository
+    public interface ILangService
     {
         Task<IEnumerable<Lang>> GetAllAsync();
         Task<DictLang> GetAsync(LangId langId);
-        Task<DictLang> GetByLangAsync(Lang lang);
-        async Task<bool> IsExistsByLangAsync(Lang lang)
-        {
-            var DictLang = await GetByLangAsync(lang);
-            return DictLang != null;
-        }
         async Task<bool> IsExistsAsync(LangId langId)
         {
             var DictLang = await GetAsync(langId);
             return DictLang != null;
         }
-
-
-        Task AddAsync(Lang lang);
-        Task DeleteAsync(LangId langId);
+        void AddAsync(Lang lang);
+        void DeleteAsync(LangId langId);
     }
 }

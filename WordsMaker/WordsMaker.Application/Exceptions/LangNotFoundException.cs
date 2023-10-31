@@ -4,7 +4,7 @@ using WordsMaker.Core.Entity;
 
 namespace WordsMaker.Application.Exceptions
 {
-    public class LangNotFoundException : CustomAppException
+    public sealed class LangNotFoundException : CustomAppException
     {
         public DictLang DictLang { get; }
 
