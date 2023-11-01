@@ -12,5 +12,8 @@ namespace WordsMaker.Application.DTO
         {
             Lang = lang;
         }
+        public LangDto()
+        {                
+        }
     }
 }

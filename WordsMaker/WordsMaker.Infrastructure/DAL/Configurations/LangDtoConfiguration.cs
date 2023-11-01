@@ -12,7 +12,7 @@ namespace WordsMaker.Infrastructure.DAL.Configurations
             builder.HasKey(x => x.Lang);
             builder.Property(x => x.Lang)
                 .IsRequired()
-                .HasConversion(x => x, x => new Lang(x));
+                .HasConversion(x => x.Value, x => new Lang(x));
         }
 
     }

@@ -19,5 +19,9 @@ namespace WordsMaker.Application.DTO
             CurrentLang = currentLang;
             WordId = wordId;
         }
+        public SufixToWordDto()
+        {
+            
+        }
     }
 }

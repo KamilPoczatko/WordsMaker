@@ -10,17 +10,18 @@ namespace WordsMaker.Infrastructure
 {
     public static class Extension
     {
-        private const string OptionsSectionName = "connstring";
+        private const string OptionsSectionName = "connString";
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<SqlServerOptions>(x => configuration.GetSection(OptionsSectionName));
             var SqlServerOptions = configuration.GetOptions<SqlServerOptions>(OptionsSectionName);
 
-            services.AddDbContext<WordsMakerDbContext>(options => options.UseSqlServer(SqlServerOptions.ConnectionString))
-                .AddTransient<IDictSufixRepository,     DictSufixRepository>()
-                .AddTransient<IDictWordRepository,      DictWordRepository>()
-                .AddTransient<ILangRepository,          LangRepository>()
-                .AddTransient<ITranslationRepository,   TranslationRepository>();
+            services.AddDbContext<WordsMakerDbContext>(options => options.UseSqlServer(SqlServerOptions.ConnectionString));
+
+            services.AddTransient<IDictSufixRepository,     DictSufixRepository>()
+                    .AddTransient<IDictWordRepository,      DictWordRepository>()
+                    .AddTransient<ILangRepository,          LangRepository>()
+                    .AddTransient<ITranslationRepository,   TranslationRepository>();
             return services;
         }
 

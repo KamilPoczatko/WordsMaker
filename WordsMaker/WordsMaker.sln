@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsMaker", "WordsMaker\WordsMaker.csproj", "{CFD80385-2D77-49DB-92EC-7B9C5028D9C6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsMaker.Core", "WordsMaker.Core\WordsMaker.Core.csproj", "{23FBA37E-1AC5-4664-8241-63886C951F9F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WordsMaker.Application", "WordsMaker.Application\WordsMaker.Application.csproj", "{A7822410-D9B7-4AB5-A74F-9C7594ED2415}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsMaker.Infrastructure", "WordsMaker.Infrastructure\WordsMaker.Infrastructure.csproj", "{5E1B8F52-2620-4A85-ABAF-B42FAD89587C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsMaker.Api", "WordsMaker.Api\WordsMaker.Api.csproj", "{935ED9D0-5795-4CB6-B545-72EF71F032EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsMaker", "WordsMaker\WordsMaker.csproj", "{1FC6268A-505F-4E09-B40C-12742F3B2243}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CFD80385-2D77-49DB-92EC-7B9C5028D9C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFD80385-2D77-49DB-92EC-7B9C5028D9C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFD80385-2D77-49DB-92EC-7B9C5028D9C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFD80385-2D77-49DB-92EC-7B9C5028D9C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23FBA37E-1AC5-4664-8241-63886C951F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23FBA37E-1AC5-4664-8241-63886C951F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23FBA37E-1AC5-4664-8241-63886C951F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{5E1B8F52-2620-4A85-ABAF-B42FAD89587C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E1B8F52-2620-4A85-ABAF-B42FAD89587C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E1B8F52-2620-4A85-ABAF-B42FAD89587C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{935ED9D0-5795-4CB6-B545-72EF71F032EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{935ED9D0-5795-4CB6-B545-72EF71F032EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{935ED9D0-5795-4CB6-B545-72EF71F032EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{935ED9D0-5795-4CB6-B545-72EF71F032EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC6268A-505F-4E09-B40C-12742F3B2243}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC6268A-505F-4E09-B40C-12742F3B2243}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC6268A-505F-4E09-B40C-12742F3B2243}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC6268A-505F-4E09-B40C-12742F3B2243}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

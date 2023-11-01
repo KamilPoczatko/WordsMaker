@@ -15,10 +15,10 @@ namespace WordsMaker.Infrastructure.DAL.Configurations
             builder.HasKey(x => new { x.CurrentWordId, x.ForeignWordId});
             builder.Property(x => x.CurrentWordId)
                 .IsRequired()
-                .HasConversion(x => x, x => new WordId(x));
+                .HasConversion(x => x.Id, x => new WordId(x));
             builder.Property(x => x.ForeignWordId)
                 .IsRequired()
-                .HasConversion(x => x, x => new WordId(x));
+                .HasConversion(x => x.Id, x => new WordId(x));
         }
     }
 }

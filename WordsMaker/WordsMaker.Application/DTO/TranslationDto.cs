@@ -16,5 +16,9 @@ namespace WordsMaker.Application.DTO
             CurrentWordId = currentWordId;
             ForeignWordId = foreignWordId;
         }
+        public TranslationDto()
+        {
+                
+        }
     }
 }

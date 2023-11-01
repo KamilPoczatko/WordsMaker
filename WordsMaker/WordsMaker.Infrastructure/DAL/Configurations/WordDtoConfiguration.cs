@@ -16,14 +16,15 @@ namespace WordsMaker.Infrastructure.DAL.Configurations
             builder.HasKey(x => x.WordId);
             builder.Property(x => x.WordId)
                 .IsRequired()
-                .HasConversion(x => x, x => new WordId(x));
+                .HasConversion(x => x.Id, x => new WordId(x));
             builder.Property(x => x.Value)
                 .IsRequired()
                 .HasConversion(x => x.Value, x => new Word(x));
             builder.Property(x => x.CurrentLang)
                 .IsRequired()
-                .HasConversion(x => x, x => new Lang(x));
+                .HasConversion(x => x.Value, x => new Lang(x));
             builder.Property(x => x.Context);
+                //.HasConversion(x => x, x => x);
             builder.Property(x => x.Type);
         }
     }

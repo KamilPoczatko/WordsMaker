@@ -51,8 +51,12 @@ namespace WordsMaker.Infrastructure.DAL.Repositories
 
         public async Task<DictLang> GetAsync(Lang lang)
         {
-            var LangDto = await _dictLangs.SingleOrDefaultAsync(x => x.Lang == lang);
-            return new DictLang(LangDto.Lang);
+            var LangDto = _dictLangs.SingleOrDefault(x => x.Lang == lang);
+            if (LangDto == null)
+            {
+                return null;
+            }
+            return  new DictLang(LangDto.Lang);
         }
             
 

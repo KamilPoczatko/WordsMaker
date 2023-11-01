@@ -11,10 +11,10 @@ namespace WordsMaker.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddTransient<ILangService,         LangService>()
-                    .AddTransient<IDictWordService,     DictWordService>()
-                    .AddTransient<IDictSufixService,    DictSufixService>()
-                    .AddTransient<ITranslationService,  TranslationService>();
+            services.AddTransient<ILangService, LangService>()
+                    .AddTransient<IDictWordService, DictWordService>()
+                    .AddTransient<IDictSufixService, DictSufixService>();
+                    //.AddTransient<ITranslationService,  TranslationService>();
             return services;
         }
     }

@@ -17,13 +17,13 @@ namespace WordsMaker.Infrastructure.DAL.Configurations
             builder.HasKey(x => x.SufixId);
             builder.Property(x => x.SufixId)
                 .IsRequired()
-                .HasConversion(x => x, x => new SufixId(x));
+                .HasConversion(x => x.Id, x => new SufixId(x));
             builder.Property(x => x.Value)
                 .IsRequired()
                 .HasConversion(x => x.Value, x => new Phrase(x));
             builder.Property(x => x.CurrentLang)
                 .IsRequired()
-                .HasConversion(x => x, x => new Lang(x));
+                .HasConversion(x => x.Value, x => new Lang(x));
             builder.Property(x => x.SufixType);
         }
     }

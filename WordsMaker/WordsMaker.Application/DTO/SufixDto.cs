@@ -21,5 +21,9 @@ namespace WordsMaker.Application.DTO
             Value = value;
             SufixType = sufixType;
         }
+        public SufixDto()
+        {
+                
+        }
     }
 }

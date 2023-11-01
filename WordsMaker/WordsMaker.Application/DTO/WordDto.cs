@@ -12,8 +12,16 @@ namespace WordsMaker.Application.DTO
         public WordId WordId { get; set; }
         public Lang CurrentLang { get; set; }
         public Word Value { get; set; }
-        public WordType Type => Value.Type;
-        public string Context => Value.Context;
+        public WordType Type
+        {
+            set { Value.Type = value; }
+            get { return Value.Type; }
+        }
+        public string Context
+        {
+            set { Value.Context = value; }
+            get { return Value.Context; }
+        }
 
         public WordDto(Lang currentLang, Word value, WordType type, string context)
         {
@@ -22,6 +30,10 @@ namespace WordsMaker.Application.DTO
             Value.Type = type;
             Value.Context = context;
             WordId = Guid.NewGuid();
+        }
+        public WordDto()
+        {
+                
         }
     }
 }

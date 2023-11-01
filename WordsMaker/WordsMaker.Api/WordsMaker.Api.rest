@@ -1,0 +1,15 @@
+﻿@url = https://localhost:5001
+
+###
+POST {{url}}/lang
+Content-Type: application/json
+
+{
+  "lang": 
+    {"value": "PL"}
+}
+
+###
+GET {{url}}/lang
+Content-Type: application/json
+

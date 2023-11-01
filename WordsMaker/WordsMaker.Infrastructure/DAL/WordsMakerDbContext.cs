@@ -20,6 +20,10 @@ namespace WordsMaker.Infrastructure.DAL
         public WordsMakerDbContext(DbContextOptions<WordsMakerDbContext> options) : base(options)
         {
         }
+        public WordsMakerDbContext()
+        {
+
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
