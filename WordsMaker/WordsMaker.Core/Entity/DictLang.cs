@@ -9,7 +9,10 @@ namespace WordsMaker.Core.Entity
     public class DictLang
     {
         public Lang Lang { get; }
-        public LangId LangId { get; }
 
+        public DictLang(Lang lang)
+        {
+            Lang = lang;
+        }
     }
 }

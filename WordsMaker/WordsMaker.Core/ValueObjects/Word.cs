@@ -7,8 +7,8 @@ namespace WordsMaker.Core.ValueObjects
 {
     public class Word : Phrase
     {
-        public WordType Type { get; private set; }
-        public string Context { get; private set; }
+        public WordType Type { get; set; }
+        public string Context { get; set; }
         public Word(string value, WordType type = WordType.Noun, string context = "") : base(value)
         {
             Type = type;

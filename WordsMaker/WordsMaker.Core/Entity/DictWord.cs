@@ -11,13 +11,13 @@ namespace WordsMaker.Core.Entity
     {
         public WordId WordId { get; }
         public Word Value { get; }
-        public DictLang CurrentLang { get; }       
+        public Lang CurrentLang { get; }       
         public Phrase Phrase => Value;
         public Guid Id => WordId;
 
-        Lang IExpressionable.CurrentLang => CurrentLang.Lang;
+        Lang IExpressionable.CurrentLang => CurrentLang;
 
-        public DictWord(WordId wordId, DictLang lang, Word value)
+        public DictWord(WordId wordId, Lang lang, Word value)
         {
             WordId = wordId;
             CurrentLang = lang;

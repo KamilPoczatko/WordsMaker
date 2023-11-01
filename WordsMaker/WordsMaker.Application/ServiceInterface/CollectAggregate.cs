@@ -30,19 +30,16 @@ namespace WordsMaker.Application.ServiceInterface
             _langService = langService;
         }
 
-        public async void ProcessAggregate(DictWord dictWord, DictLang foreignLang)
+        public async void ProcessAggregate(DictWord dictWord, Lang foreignLang)
         {
             ValidLang(dictWord.CurrentLang);
             ValidLang(foreignLang);
 
-            var translations = await _translationService.GetAsync(dictWord, foreignLang);
+            var foreignDictLang = await _langService.GetAsync(foreignLang);
 
-            var currentTranslation = translations.FirstOrDefault(x => x.CurrentWord.Value.Context == dictWord.Value.Context);
-            if (currentTranslation is null)
-            {
-                throw new TranslationNotFoundException(dictWord, foreignLang);
-            }
-            
+            var translations = await _translationService.GetAsync(dictWord, foreignDictLang);
+
+            var currentTranslation = translations.FirstOrDefault(x => x.CurrentWord.Value.Context == dictWord.Value.Context) ?? throw new TranslationNotFoundException(dictWord, foreignLang);
             var sufixes = await _sufixService.GetAllByWordAsync(currentTranslation.ForeignWord);
             var prefix = sufixes.OfType<DictPrefix>().FirstOrDefault(x => x.SufixType == Sufix.Prefix);
             var postfix = sufixes.OfType<DictPostfix>().FirstOrDefault(x => x.SufixType == Sufix.Postfix);
@@ -52,16 +49,16 @@ namespace WordsMaker.Application.ServiceInterface
             
             var wordsDiffType = _wordService.GetAllRelatedAsync(currentTranslation.ForeignWord);
 
-            Aggregate = new Aggregate(currentTranslation, null, wordsDiffMean, prefix, postfix );
+            Aggregate = new Aggregate(currentTranslation, null, wordsDiffMean, prefix, postfix);
 
 
         }
 
-        private async void ValidLang(DictLang dictLang)
+        private async void ValidLang(Lang lang)
         {
-            if(!await _langService.IsExistsAsync(dictLang.LangId))
+            if(!await _langService.IsExistsAsync(lang))
             {
-                throw new LangNotFoundException(dictLang);
+                throw new LangNotFoundException(lang);
             }
         }
 

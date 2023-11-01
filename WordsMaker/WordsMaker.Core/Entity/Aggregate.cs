@@ -7,11 +7,11 @@ namespace WordsMaker.Core.Entity
 {
     public class Aggregate
     {
-        Translation Translation { get; }
-        IEnumerable<DictWord> WordsDiffType { get; }
-        IEnumerable<Phrase> PhrasesDiffMean { get; }
-        DictPrefix Prefix { get; }
-        DictPostfix Postfix { get; }
+        public Translation Translation { get; }
+        public IEnumerable<DictWord> WordsDiffType { get; }
+        public IEnumerable<Phrase> PhrasesDiffMean { get; }
+        public DictPrefix Prefix { get; }
+        public DictPostfix Postfix { get; }
 
         public Aggregate(Translation translation, IEnumerable<DictWord> wordsDiffType, IEnumerable<Phrase> phrasesDiffMean, DictPrefix prefix, DictPostfix postfix)
         {

@@ -42,8 +42,8 @@ namespace WordsMaker.Application.ServiceInterface.ServiceDefinitions
             _translationRepository.AddAsync(translation);
         }
 
-        public void DeleteAsync(TranslationId translationId)
-            => _translationRepository.DeleteAsync(translationId);
+        public void DeleteAsync(WordId currentWordId, WordId foreignWordId)
+            => _translationRepository.DeleteAsync(currentWordId, foreignWordId);
 
         public Task<IEnumerable<Translation>> GetAllAsync()
             => _translationRepository.GetAllAsync();

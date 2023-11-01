@@ -23,8 +23,8 @@ namespace WordsMaker.Core.Repository
 
         Task AddAsync(DictSufix dictSufix);
         Task DeleteAsync(SufixId SufixId);
-        Task AddRelatedWord(SufixId SufixId, Word relatedWord);
-        Task AddRelatedWords(SufixId SufixId, IEnumerable<Word> relatedWords);
+        Task AddRelatedWord(SufixId SufixId, DictWord relatedWord);
+        Task AddRelatedWords(SufixId SufixId, IEnumerable<DictWord> relatedWords);
 
 
     }

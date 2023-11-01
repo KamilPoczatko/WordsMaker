@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using WordsMaker.Core.Entity;
+using WordsMaker.Core.ValueObjects;
 
 namespace WordsMaker.Application.Exceptions
 {
     public sealed class LangNotFoundException : CustomAppException
     {
-        public DictLang DictLang { get; }
+        public Lang Lang { get; }
 
-        public LangNotFoundException(DictLang dictLang) : base($"Language {dictLang.Lang} not found.")
+        public LangNotFoundException(Lang lang) : base($"Language {lang} not found.")
         {
-            DictLang = dictLang;
+            Lang = lang;
         }
     }
 }

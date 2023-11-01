@@ -12,12 +12,12 @@ namespace WordsMaker.Core.Entity
     {
         SufixId SufixId { get; }
         public Lang CurrentLang { get; }
-        public IEnumerable<Word> RelatedWords { get; }
+        public IEnumerable<DictWord> RelatedWords { get; }
         public Phrase Phrase => Value;
         public Guid Id => SufixId;
         public abstract Sufix SufixType {  get; }
 
-        public DictSufix(SufixId sufixId ,Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(value)
+        public DictSufix(SufixId sufixId ,Lang lang, IEnumerable<DictWord> relatedWords, Phrase value) : base(value)
         {
             SufixId = sufixId;
             CurrentLang = lang;

@@ -11,7 +11,7 @@ namespace WordsMaker.Core.Entity
     {
         public override Sufix SufixType => Sufix.Postfix;
 
-        public DictPostfix(SufixId sufixId, Lang lang, IEnumerable<Word> relatedWords, Phrase value) : base(sufixId, lang, relatedWords, value)
+        public DictPostfix(SufixId sufixId, Lang lang, IEnumerable<DictWord> relatedWords, Phrase value) : base(sufixId, lang, relatedWords, value)
         {
         }
     }

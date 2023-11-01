@@ -13,7 +13,7 @@ namespace WordsMaker.Application.ServiceInterface.ServiceAbstractions
         Task<IEnumerable<Translation>> GetAllAsync();
         Task<IEnumerable<Translation>> GetAsync(IExpressionable expressionable, DictLang foreignLang);
         void AddAsync(Translation translation);
-        void DeleteAsync(TranslationId translationId);
+        void DeleteAsync(WordId currentWordId, WordId foreignWordId);
 
         public async Task<bool> IsExistsAsync(IExpressionable expressionable, DictLang foreignLang)
         {

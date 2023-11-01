@@ -30,24 +30,20 @@ namespace WordsMaker.Application.ServiceInterface.ServiceDefinitions
                 throw new SufixIdEmptyException();
             }
 
-            var DictSufix = await GetAsync(sufixId);            
-            if (DictSufix is null)
-            {
-                throw new DictSufixNotFoundException(sufixId);
-            }
+            _ = await GetAsync(sufixId) ?? throw new DictSufixNotFoundException(sufixId);
         }
 
         public void AddAsync(DictSufix dictSufix)
             => _dictSufixRepository.AddAsync(dictSufix);
 
-        public async void AddRelatedWord(SufixId sufixId, Word relatedWord)
+        public async void AddRelatedWord(SufixId sufixId, DictWord relatedWord)
         {
             IsSufixValid(sufixId);
 
             await _dictSufixRepository.AddRelatedWord(sufixId, relatedWord);
         }
 
-        public async void AddRelatedWords(SufixId sufixId, IEnumerable<Word> relatedWords)
+        public async void AddRelatedWords(SufixId sufixId, IEnumerable<DictWord> relatedWords)
         {
             IsSufixValid(sufixId);
 

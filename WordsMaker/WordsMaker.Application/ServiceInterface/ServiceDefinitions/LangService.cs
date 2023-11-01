@@ -21,22 +21,22 @@ namespace WordsMaker.Application.ServiceInterface.ServiceDefinitions
             _langRepository = langRepository;
         }
 
-        public async void AddAsync(Lang lang)
+        public async void AddAsync(DictLang lang)
         {
-            if(await _langRepository.IsExistsByLangAsync(lang))
+            if(await _langRepository.IsExistsAsync(lang.Lang))
             {
-                throw new LangAlreadyExistsException(lang);
+                throw new LangAlreadyExistsException(lang.Lang);
             }
             await _langRepository.AddAsync(lang);
         }
 
-        public void DeleteAsync(LangId langId)
-            => _langRepository.DeleteAsync(langId);
+        public void DeleteAsync(Lang lang)
+            => _langRepository.DeleteAsync(lang);
 
-        public Task<IEnumerable<Lang>> GetAllAsync()
+        public Task<IEnumerable<DictLang>> GetAllAsync()
             => _langRepository.GetAllAsync();
 
-        public Task<DictLang> GetAsync(LangId langId)
-            => _langRepository.GetAsync(langId);
+        public Task<DictLang> GetAsync(Lang lang)
+            => _langRepository.GetAsync(lang);
     }
 }

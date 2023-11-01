@@ -22,7 +22,7 @@ namespace WordsMaker.Application.ServiceInterface.ServiceAbstractions
 
         void AddAsync(DictSufix dictSufix);
         void DeleteAsync(SufixId SufixId);
-        void AddRelatedWord(SufixId SufixId, Word relatedWord);
-        void AddRelatedWords(SufixId SufixId, IEnumerable<Word> relatedWords);
+        void AddRelatedWord(SufixId SufixId, DictWord relatedWord);
+        void AddRelatedWords(SufixId SufixId, IEnumerable<DictWord> relatedWords);
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using WordsMaker.Core.DomainService;
 
 namespace WordsMaker.Core
 {
@@ -10,7 +9,7 @@ namespace WordsMaker.Core
     {
         public static IServiceCollection AddCore(this IServiceCollection services)
         {
-            services.AddScoped<IWordsMakerCoreService, WordsMakerCoreService>();
+            //services.AddScoped<IWordsMakerCoreService, WordsMakerCoreService>();
             return services;
         }
     }

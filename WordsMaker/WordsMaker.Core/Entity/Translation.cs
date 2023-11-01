@@ -7,19 +7,16 @@ using WordsMaker.Core.ValueObjects.IDs;
 
 namespace WordsMaker.Core.Entity
 {
-    public class Translation : ITranslatable, ITraceable
+    public class Translation : ITranslatable
     {
-        TranslationId TranslationId { get; }
         public DictWord CurrentWord { get; }
         public DictWord ForeignWord { get; }
-
-        public Guid Id => TranslationId;
 
         public Translation(DictWord currentWord, DictWord foreignWord)
         {
             if(currentWord.CurrentLang == foreignWord.CurrentLang)
             {
-                throw new DoubledLangException(currentWord.CurrentLang.Lang);
+                throw new DoubledLangException(currentWord.CurrentLang);
             }
 
             CurrentWord = currentWord;

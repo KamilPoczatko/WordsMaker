@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WordsMaker.Core.Enums;
 using WordsMaker.Core.ValueObjects.IDs;
 using WordsMaker.Core.ValueObjects;
+using WordsMaker.Core.Enums;
 
 namespace WordsMaker.Application.DTO
 {
-    public class SufixDto
+    public class SufixToWordDto
     {
         public SufixId SufixId { get; }
         public Lang CurrentLang { get; }
-        public Phrase Value { get; }
-        public Sufix SufixType { get; }
+        public WordId WordId { get; }
 
-        public SufixDto(Lang currentLang, Phrase value, Sufix sufixType)
+        public SufixToWordDto(Lang currentLang, SufixId sufixId, WordId wordId) 
         {
-            SufixId = Guid.NewGuid();
+            SufixId = sufixId;           
             CurrentLang = currentLang;
-            Value = value;
-            SufixType = sufixType;
+            WordId = wordId;
         }
     }
 }

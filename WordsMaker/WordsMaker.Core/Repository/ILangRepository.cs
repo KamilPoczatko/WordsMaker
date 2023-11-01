@@ -10,22 +10,14 @@ namespace WordsMaker.Core.Repository
 {
     public interface ILangRepository
     {
-        Task<IEnumerable<Lang>> GetAllAsync();
-        Task<DictLang> GetAsync(LangId langId);
-        Task<DictLang> GetByLangAsync(Lang lang);
-        async Task<bool> IsExistsByLangAsync(Lang lang)
+        Task<IEnumerable<DictLang>> GetAllAsync();
+        Task<DictLang> GetAsync(Lang lang);        
+        async Task<bool> IsExistsAsync(Lang lang)
         {
-            var DictLang = await GetByLangAsync(lang);
+            var DictLang = await GetAsync(lang);
             return DictLang != null;
         }
-        async Task<bool> IsExistsAsync(LangId langId)
-        {
-            var DictLang = await GetAsync(langId);
-            return DictLang != null;
-        }
-
-
-        Task AddAsync(Lang lang);
-        Task DeleteAsync(LangId langId);
+        Task AddAsync(DictLang lang);
+        Task DeleteAsync(Lang lang);
     }
 }

@@ -10,14 +10,14 @@ namespace WordsMaker.Application.ServiceInterface.ServiceAbstractions
 {
     public interface ILangService
     {
-        Task<IEnumerable<Lang>> GetAllAsync();
-        Task<DictLang> GetAsync(LangId langId);
-        async Task<bool> IsExistsAsync(LangId langId)
+        Task<IEnumerable<DictLang>> GetAllAsync();
+        Task<DictLang> GetAsync(Lang lang);
+        async Task<bool> IsExistsAsync(Lang lang)
         {
-            var DictLang = await GetAsync(langId);
+            var DictLang = await GetAsync(lang);
             return DictLang != null;
         }
-        void AddAsync(Lang lang);
-        void DeleteAsync(LangId langId);
+        void AddAsync(DictLang dictLang);
+        void DeleteAsync(Lang lang);
     }
 }
